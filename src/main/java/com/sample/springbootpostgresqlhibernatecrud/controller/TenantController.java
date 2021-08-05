@@ -26,6 +26,7 @@ public class TenantController {
         return tenantRepository.save(tenantDTORequest.getTenant());
     }
 
+
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public List<Tenant> getAllTenants(){
         return tenantRepository.findAll();
@@ -39,6 +40,7 @@ public class TenantController {
                     tenant.setName(tenantDTORequest.getTenant().getName());
                     tenant.setDescription(tenantDTORequest.getTenant().getDescription());
                     tenant.setAddress(tenantDTORequest.getTenant().getAddress());
+                    tenant.setDevices(tenantDTORequest.getTenant().getDevices());
                     return tenantRepository.save(tenant);
                 })
                 .orElseGet(() -> {
